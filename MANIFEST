@@ -1,0 +1,7 @@
+MANIFEST
+README
+Makefile.PL
+lib/ShellScript/Env.pm
+t/generate.t
+t/dir_find.t
+t/lib
