@@ -39,7 +39,7 @@ sub automatic {
 
     foreach my $env (keys %{$self->{'dir_search'}}) {
 	my @found = $self->dir_find(@{$self->{'dir_search'}->{$env}});
-	if ($#{@found} >= 0) {
+	if (scalar(@found) > 0) {
 	    $self->set_path($env, @found, "\$$env");
 	}
     }

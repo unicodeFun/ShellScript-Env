@@ -5,3 +5,5 @@ lib/ShellScript/Env.pm
 t/generate.t
 t/dir_find.t
 t/lib
+t/root/bin/ignore
+t/root/lib/ignore

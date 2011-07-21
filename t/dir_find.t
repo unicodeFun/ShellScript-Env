@@ -12,14 +12,14 @@ use ShellScript::Env;
 #####################
 print "1..3\n";
 
-my $test = new ShellScript::Env('./');
+my $test = new ShellScript::Env('./t');
 
 #################
 # Test 1, just do a search for lib
-my @expect = sort ('./lib', './blib/lib');
-my @got = sort $test->dir_find('lib');
+my @expect = sort qw(./t/root/bin ./t/bin);
+my @got = sort $test->dir_find('bin');
 my $error = 0;
-if ($#{expect} != $#{got}) {
+if (scalar(@expect) != scalar(@got)) {
   print "not ok\n";
 } else {
   my $output = "ok\n";
@@ -37,20 +37,21 @@ for (@got) {
 ####################
 # Test 2, convert it to C Shell
 $test->automatic();
-&check($test->sh(), <<'EXPECT'
-LD_LIBRARY_PATH=./lib:./blib/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH
+&check($test->sh(), <<'EXPECT');
+LD_LIBRARY_PATH=./t/root/lib:$LD_LIBRARY_PATH
+PATH=./t/root/bin:./t/bin:$PATH
+export LD_LIBRARY_PATH PATH
 EXPECT
-);
 
 ###############
 # Test 3, try find_dir() with a different skip_dirs list.
 $test->unset('LD_LIBRARY_PATH');
-push @{$test->{'skip_dirs'}}, 'blib';
+$test->unset('PATH');
+push @{$test->{'skip_dirs'}}, 't/root';
 $test->automatic();
 &check($test->sh(), <<'EXPECT'
-LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH
+PATH=./t/bin:$PATH
+export PATH
 EXPECT
 );
 
