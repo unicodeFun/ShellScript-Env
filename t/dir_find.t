@@ -34,14 +34,16 @@ for (@got) {
     print "# $_\n";
 }
 
+
 ####################
 # Test 2, convert it to C Shell
 $test->automatic();
 &check($test->sh(), <<'EXPECT');
 LD_LIBRARY_PATH=./t/root/lib:$LD_LIBRARY_PATH
-PATH=./t/root/bin:./t/bin:$PATH
+PATH=./t/bin:./t/root/bin:$PATH
 export LD_LIBRARY_PATH PATH
 EXPECT
+
 
 ###############
 # Test 3, try find_dir() with a different skip_dirs list.
@@ -59,6 +61,8 @@ EXPECT
 ##################
 # Little auxiliary function to save me typing.
 
+use Data::Dumper;
+
 sub check {
   my $got = shift;
   my $expect = shift;
@@ -67,6 +71,8 @@ sub check {
     print "ok\n";
   } else {
     print "not ok\n";
+    warn "--\ngot:\n$got\nexpect:\n$expect\n--";
+
   }
 
   $got =~ s/^/\# /gm;
