@@ -43,7 +43,6 @@ sub automatic {
 	    $self->set_path($env, @found, "\$$env");
 	}
     }
-    
     return $self;
 }
 
@@ -258,7 +257,7 @@ sub dir_find {
   undef @ShellScript::Env::found;
   undef $ShellScript::Env::find;
 
-  return @output;
+  return sort @output;
 }
 
 # Only used for call to find.
