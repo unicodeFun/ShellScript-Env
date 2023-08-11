@@ -142,7 +142,7 @@ sub sh {
   my $output = '';
   my $export = 'export ';
 
-  for (@{$self->{'order'}}) {
+  for (sort @{$self->{'order'}}) {
     $export .= "$_ ";
 
     if ($self->{'utok'}->{$_}) {
