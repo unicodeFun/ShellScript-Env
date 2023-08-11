@@ -115,9 +115,9 @@ sub save {
     warn "Can't write $csh_file: $!";
   }
 
-  my $sh_file = "$self->{prefix}sh";
+  my $sh_file = "$self->{prefix}.sh";
   if (open(SH, ">$sh_file")) {
-    print "Writing $sh_file.\n";
+    print "Writing $sh_file\n";
     print SH $self->sh();
     close(SH);
   } else {
