@@ -1,4 +1,4 @@
-This version of ShellScript-Env isn't compatible with Version 0.0.
+This version of ShellScript-Env isn't compatible with Version 0.0.
 
 This is a program that allows one to create simple Bourne and C Shell
 that set environmental labels.  The program:
@@ -40,4 +40,4 @@ To install:
 
 sorry, no POD documentation yet.
 
-Please e-mail comments and questions to Sven Heinicke <sven@zen.org>.
+Please e-mail comments and questions to Sven Heinicke <sven@heinicke.org>.

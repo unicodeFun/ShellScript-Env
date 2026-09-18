@@ -5,7 +5,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile
   (
    NAME		=> 'ShellScript-Env',
-   VERSION	=> '0.5',
+   VERSION	=> '0.6',
    dist		=> { COMPRESS => 'gzip --best', SUFFIX => 'gz' },
   );
 
